@@ -1,12 +1,19 @@
-keycloak:
+app:
   clientId: validador
+  client_id: validador
+  grant_type: password
+  password: user3
+  urlAuth: http://${HOST_KEYCLOAK}:8080/realms/UsuariosCursoRealm/protocol/openid-connect/token
+  username: user3
 server:
   port: 8500
 spring:
+  application:
+   name: servicio-reserva
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     password: root
-    url: jdbc:mysql://${HOST_DB}:${PORT_DB}3306/viajes
+    url: jdbc:mysql://${HOST_DB}:3306/viajes
     username: root
   jpa:
     hibernate:
@@ -17,9 +24,11 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://{HOST}:8080/realms/UsuariosCursoRealm
+          issuer-uri: http://${HOST_KEYCLOAK}:8080/realms/UsuariosCursoRealm
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
 eureka:
+  instance:
+    hostname: ${HOST}
   client:
     serviceUrl:
       defaultZone: http://${HOST_EUREKA}:8761/eureka
