@@ -1,12 +1,12 @@
 keycloak:
   clientId: validador
 server:
-  port: 8000
+  port: 8500
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     password: root
-    url: jdbc:mysql://${HOST_DB}:${PORT_DB}3306/libreria
+    url: jdbc:mysql://${HOST_DB}:${PORT_DB}3306/viajes
     username: root
   jpa:
     hibernate:
