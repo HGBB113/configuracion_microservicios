@@ -1,0 +1,18 @@
+spring:
+ datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: root
+    url: jdbc:mysql://{HOST_DB}:3306/viajes
+    username: root
+server:
+  port: 7000 
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+eureka:
+ instance:
+   hostname: ${HOST}  
+ client:
+     serviceUrl:
+      defaultZone: http://{HOST}:8761/eureka
